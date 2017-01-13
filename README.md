@@ -1,5 +1,6 @@
 # eslint-plugin-console-saas-rules
 
+A collection of eslint rules to check conventions used in the console saas web repo. Will cover a variety of ES6, Angular, and bespoke conecerns.
 ## Usage
 
 Add `console-saas-rules` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
