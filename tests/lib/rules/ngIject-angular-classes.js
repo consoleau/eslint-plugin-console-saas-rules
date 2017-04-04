@@ -1,15 +1,17 @@
 "use strict";
 
-const rule = require("../../../lib/rules/exporting-angular-module");
+const rule = require("../../../lib/rules/ngInject-angular-classes");
 const RuleTester = require("../../../node_modules/eslint/lib/testers/rule-tester");
 const myConfig = require('./index.js');
 
 RuleTester.setDefaultConfig(myConfig);
 
 const ruleTester = new RuleTester();
-ruleTester.run("exporting-angular-module", rule, {
+ruleTester.run("ngInject-angular-classes", rule, {
   valid: [
     `class MyComponentController {
+        myMethod(){
+        }
         constructor($q) {
           'ngInject';
           this.$q = $q;
@@ -22,12 +24,44 @@ ruleTester.run("exporting-angular-module", rule, {
           this.$http = $http;
         }
       }
-      angular.module('App').service('myService', MyService);`
+      angular.module('App').service('myService', MyService);`,
+    `class MyClass {
+        constructor(stuff) {
+          this.stuff = stuff;
+        }
+      }
+     MyClass.staticStuff={};`,
+    `class MyDirective {
+        constructor($timeout) {
+          this.link = (scope, element) => {};
+          $timeout(() => {console.log('hello');}, 0);
+        }
+      }
+      angular.module('App').directive('myDirective', ($timeout) => {
+        'ngInject';
+        return new MyDirective($timeout);
+      });`
   ],
   invalid: [
     {
-      code: "export default angular.module('App').component('hello',{});",
-      errors: [{message: "Should not export the return of angular.app()"}]
+      code: `class MyComponentController {
+            constructor($q) {
+              this.$q = $q;
+            }
+          }
+          angular.module('App').service('component1', {controller: MyComponentController});`,
+      errors: [{message: "Should use ngInject"}]
+    },
+    {
+      code: `class MyComponentController {
+            constructor($q) {
+              this.$q = $q;
+              'ngInject';
+            }
+          }
+          angular.module('App').service('component1', {controller: MyComponentController});`,
+      errors: [{message: "Should use ngInject"}]
     }
   ]
-});
+})
+;
