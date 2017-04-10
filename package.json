@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-console-saas-rules",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Custom ESLint rules for console saas web",
   "keywords": [
     "eslint",
