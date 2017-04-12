@@ -15,7 +15,7 @@ ruleTester.run("ngInject-resolve-objects", rule, {
             Property: function (State) {
               'ngInject';
             },
-            carIds: function (State) {
+            carIds: State => {
               'ngInject';
               return State.get('car.ids');
             }
