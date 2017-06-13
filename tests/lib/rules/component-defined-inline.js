@@ -6,6 +6,7 @@ const RuleTester = require("../../../node_modules/eslint/lib/testers/rule-tester
 const ruleTester = new RuleTester();
 ruleTester.run("component-defined-inline", rule, {
   valid: [
+    "angular.module('App', []);",
     "angular.module('App').component('foo', {});",
     "angular.mock.module('App', { TenantAgreement: tenantAgreement });"
   ],
