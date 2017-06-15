@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-console-saas-rules",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Custom ESLint rules for console saas web",
   "keywords": [
     "eslint",
@@ -13,12 +13,12 @@
     "test": "mocha tests --recursive"
   },
   "dependencies": {
-    "requireindex": "~1.1.0"
+    "requireindex": "~1.1.0", 
+    "traverse": "^0.6.6"
   },
   "devDependencies": {
     "eslint": "~3.9.1",
-    "mocha": "^3.1.2",
-    "traverse": "^0.6.6"
+    "mocha": "^3.1.2"
   },
   "engines": {
     "node": ">=0.10.0"
