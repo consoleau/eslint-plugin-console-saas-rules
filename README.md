@@ -1,3 +1,6 @@
+# !!! DEPRECATED !!!
+This repository has been moved to bitbucket at https://bitbucket.org/consoleau/eslint-plugin-console-saas-rules
+
 # eslint-plugin-console-saas-rules
 
 A collection of eslint rules to check conventions used in the console saas web repo. Will cover a variety of ES6, Angular, and bespoke conecerns.
